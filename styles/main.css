@@ -30,6 +30,16 @@ label {
 .inputSearch {
   border-radius: 8px;
 }
+form {
+  width: 50%;
+  align-self: center;
+}
+.parrafoContacto {
+  color: white;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 5rem;
+}
 
 .contCardIndividual {
   width: 30rem;
