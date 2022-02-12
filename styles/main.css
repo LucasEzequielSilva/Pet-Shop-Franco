@@ -4,17 +4,56 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+.carritofixed{
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: .5rem;
+    left: .5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: #fff;
+    border-radius:10px;
+    z-index: 100000;
+}
+.carritofixed img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: auto;
+    right: .75rem;
+    width: 1.7rem;
+    z-index: 100000;
+}
+.contadorfixed{
+    position: relative;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: -1rem;
+    left: 1.8rem;
+    padding: .6rem;
+    font-size: .8rem;
+    font-weight: 800;
+    width: 1rem;
+    height: 1rem;
+    background-color: #8fdae5;
+    border-radius: 10px;
+    z-index: 100000;
+}
 body{
 width: 100%;
 background: #606c88;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to right, #3f4c6b 40%, #606c88 60%);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #3f4c6b, #606c88); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: linear-gradient(to right, #3f4c6b, #7b88a8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 }
 header{
     width: 100%;
-    height: 100vh;
+    min-height: 100%;
 }
 header nav a{
     color: #fff!important;
@@ -71,18 +110,19 @@ header nav a{
     width: 4rem;
 
 }
+
+
+
+
+/* main */
+
+
 main{
     min-height: 100vh;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
 }
-main>h1{
-    position: relative;
-    top: 5rem;
-    color: #fff;
-    font-weight: 800;
-    text-align: center;
-    font-size: 4rem;
-    font-family: 'Fredoka One', cursive;
-}
+
 .container__cardds{
     max-width: 1200px;
     margin: auto;
@@ -139,15 +179,15 @@ main>h1{
 
 .cardd:nth-of-type(1) .img__back{
     background: #BE93C5;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to bottom, #7BC6CC, #BE93C5);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to bottom, #7BC6CC, #BE93C5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: -webkit-linear-gradient(to bottom, #7BC6CC, #8392df);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom, #7BC6CC, #8392df); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 }
 
 .cardd:nth-of-type(2) .img__back{
     background: #BE93C5;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to bottom, #7BC6CC, #BE93C5);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to bottom, #7BC6CC, #BE93C5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: -webkit-linear-gradient(to bottom, #7BC6CC, #8392df);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom, #7BC6CC, #8392df); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 }
 
@@ -167,7 +207,7 @@ background: linear-gradient(to bottom, #7BC6CC, #BE93C5); /* W3C, IE 10+/ Edge, 
     padding: 40px;
 }
 .description h2{
-    background: linear-gradient(135deg, #ef32d9 0%,  #89fffd 100%);
+    background: linear-gradient(135deg, #90dfe4 0%,  #8392df 100%);
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     text-shadow: #ffffff00 0 0 0 !important;
@@ -175,7 +215,7 @@ background: linear-gradient(to bottom, #7BC6CC, #BE93C5); /* W3C, IE 10+/ Edge, 
     font-size: 2.6rem;
 }
 /* From cssbuttons.io by @fanishah */
-.button {
+.button{
     font-family: inherit;
     background: #2CA0D9;
     color: white;
@@ -193,6 +233,7 @@ background: linear-gradient(to bottom, #7BC6CC, #BE93C5); /* W3C, IE 10+/ Edge, 
     padding-left: 2.8em;
     padding-right: 0.9em;
     margin: auto;
+    width: 10rem;
    }
    
    .button .icon {
@@ -226,6 +267,137 @@ background: linear-gradient(to bottom, #7BC6CC, #BE93C5); /* W3C, IE 10+/ Edge, 
     width: calc(100% - 0.85rem);
     border-radius: 0.5em;
    }
-   .button span{
+   .button span, .button a{
+       text-decoration: none;
+       color: #fff;
        font-weight: 600;
    }
+   /* farmacias y juguetes */
+
+
+
+   .apartado1{
+       margin-top:10rem;
+    min-height: 100vh;
+    width: 100%;
+}
+.apartado1>h1{
+    position: relative;
+    top: 6rem;
+    color: #fff;
+    font-weight: 800;
+    text-align: center;
+    font-size: 4rem;
+    font-family: 'Fredoka One', cursive;
+}
+
+
+
+
+/* fotos de perros y texto */
+
+
+
+
+   .apartado2{
+    background: #fff;
+       border-radius: 10px;
+       padding: 2rem;
+       display: flex;
+       justify-content:space-evenly;
+       align-items: center;
+       flex-wrap: wrap;
+       min-height: 40vh;
+       width: 80%;
+       margin: auto;
+       box-shadow: rgb(0 0 0 / 16%) 2px 3px 5px 0px;
+   }
+   .apartado2 img{
+       width: 23rem;
+       height: 23rem;
+       border-radius: 20px 20px 20px 20px;
+   }
+   .apartado2 section, .apartado2 div{
+       margin-left: 1rem;
+    color: #1c1c1c;
+    width: 60%;
+       text-align: center;
+       align-self: center;
+ }
+ .apartado2>section>span, .apartado2>div>span{
+     font-weight: 600;
+     font-size: 1.5rem;
+ }
+ .apartado2>section>h2{
+     font-size: 2.5rem;
+     font-weight: 800;
+ }
+ .featurette-divider{
+     width: 80%;
+     margin: 2rem auto;
+ }
+ .gatito{
+     object-fit: cover;
+ }
+
+                                                                                                    /* FOOTER */
+
+
+ footer{
+     
+     display: flex;
+     flex-direction: column;
+     width: 100%;
+     margin: auto;
+     margin-top: 1rem;
+ }
+.apartadomap{
+    display: flex;
+    width: 50%;
+    height: 100%;
+    padding:4rem;
+}
+.apartadotexto{
+    font-family: helvetica;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-content: center;
+    flex-wrap: wrap;
+    width: 50%;
+    padding:4rem;
+}
+.apartadotexto h4{
+    font-weight: 800;
+    color: #3f4c6b;
+}
+.apartadotexto p{
+    font-size:1rem;
+    color: #3f4c6b;
+}
+ .apartadoarriba{
+     height: 40%;
+     width: 100%;
+     margin: auto;
+     display: flex;
+     flex-direction: row;
+ }
+.apartadoabajo{
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 4rem;
+    height: 5rem;
+    background-color: #3f4c6b;
+}
+.apartadoabajo span{
+    text-align: center;
+    color:#fff;
+}
+.developersf a{
+    text-decoration: none;
+}
