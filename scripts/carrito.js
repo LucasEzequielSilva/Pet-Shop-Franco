@@ -136,6 +136,7 @@ function vaciar() {
     localStorage.removeItem("carroShop")
     localStorage.removeItem("carroShopJuguetes")
     imprimirPantalla()
+    calTotales()
 }
 
 function calTotales() {

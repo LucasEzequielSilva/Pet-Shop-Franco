@@ -52,11 +52,53 @@ function imprimirProd(array) {
     $(() => {
 
         arrayImpr.forEach(producto => {
-            $("#cardContainer").append(`
+
+
+            if (producto.stock >= 5) {
+                $("#cardContainer").append(`
+                <div class="col my-5 mx-auto contCardIndividual" >
+                    <div class="card h-100 col-sm-12  mx-auto px-2">
+                    <h5 class="card-title mx-auto text-center my-3" style="width: 90%"> ${producto.nombre.toUpperCase()} </h5>
+                    <img src="${producto.imagen}"  class="card-img-top imgCard2" alt="...">
+                        <div class="card-body">
+                            <p class="card-text pCard">Precio : <span>$${producto.precio}</span></p>
+                            <p class="card-text pCard">Stock : <span>${producto.stock}u.</span></p>
+                            <p class="card-text pCard">Descripción: <span  class="d-block"> ${producto.descripcion}</span></p>
+                            <div class="d-flex flex-wrap justify-content-between">
+                            <input class="btnAgregar" type="button" id="${producto._id}"  value="Agregar al carrito" min="1">
+                            </div>
+                        </div>
+                    </div>
+                </div>`)
+
+                let valor = 1
+                $(`#inputCant${producto._id}`).on("change", () => {
+                    valor = event.target.value
+                })
+                $(`#${producto._id}`).on("click", () => {
+                    let idProducto = event.target.id
+
+                    array1.push(idProducto)
+                    let unicos = new Set(array1)
+                    console.log(unicos)
+                    let cleanCarrito = [...unicos]
+                    localStorage.setItem("carroShop", JSON.stringify(cleanCarrito))
+                    // let objetoStorage = JSON.parse(localStorage.getItem("objetoProd"))
+                    // contadorfixed.innerText = objetoStorage.length
+                    objetoStorage = JSON.parse(localStorage.getItem("carroShop")) || JSON.parse(localStorage.getItem("carroShopJuguetes")) || []
+                    if (objetoStorage.length != 0) {
+                        contadorfixed.style.visibility = "visible"
+                    }
+
+                })
+            } else {
+
+                $("#cardContainer").append(`
             <div class="col my-5 mx-auto contCardIndividual" >
                 <div class="card h-100 col-sm-12  mx-auto px-2">
                 <h5 class="card-title mx-auto text-center my-3" style="width: 90%"> ${producto.nombre.toUpperCase()} </h5>
-                <img src="${producto.imagen}" style="objet-fit:cover; border-radius:50%" class="card-img-top" alt="...">
+                <h5 class="alertUltimos">!Ultimas unidades!<h5>
+                <img src="${producto.imagen}"  class="card-img-top imgCard2" alt="...">
                     <div class="card-body">
                         <p class="card-text pCard">Precio : <span>$${producto.precio}</span></p>
                         <p class="card-text pCard">Stock : <span>${producto.stock}u.</span></p>
@@ -68,28 +110,29 @@ function imprimirProd(array) {
                 </div>
             </div>`)
 
-            let valor = 1
-            $(`#inputCant${producto._id}`).on("change", () => {
-                valor = event.target.value
-            })
-            $(`#${producto._id}`).on("click", () => {
-                let idProducto = event.target.id
+                let valor = 1
+                $(`#inputCant${producto._id}`).on("change", () => {
+                    valor = event.target.value
+                })
+                $(`#${producto._id}`).on("click", () => {
+                    let idProducto = event.target.id
 
-                array1.push(idProducto)
-                let unicos = new Set(array1)
-                console.log(unicos)
-                let cleanCarrito = [...unicos]
-                localStorage.setItem("carroShop", JSON.stringify(cleanCarrito))
-                // let objetoStorage = JSON.parse(localStorage.getItem("objetoProd"))
+                    array1.push(idProducto)
+                    let unicos = new Set(array1)
+                    console.log(unicos)
+                    let cleanCarrito = [...unicos]
+                    localStorage.setItem("carroShop", JSON.stringify(cleanCarrito))
+                    // let objetoStorage = JSON.parse(localStorage.getItem("objetoProd"))
 
 
-                // contadorfixed.innerText = objetoStorage.length
-                objetoStorage = JSON.parse(localStorage.getItem("carroShop")) || JSON.parse(localStorage.getItem("carroShopJuguetes")) || []
-                if (objetoStorage.length != 0) {
-                    contadorfixed.style.visibility = "visible"
-                }
+                    // contadorfixed.innerText = objetoStorage.length
+                    objetoStorage = JSON.parse(localStorage.getItem("carroShop")) || JSON.parse(localStorage.getItem("carroShopJuguetes")) || []
+                    if (objetoStorage.length != 0) {
+                        contadorfixed.style.visibility = "visible"
+                    }
 
-            })
+                })
+            }
         })
 
 

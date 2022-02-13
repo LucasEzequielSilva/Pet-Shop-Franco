@@ -370,7 +370,6 @@ main {
 
   border-radius: 1rem;
   margin: 1rem;
-
 }
 
 /* FOOTER */
@@ -418,7 +417,7 @@ form {
 }
 
 .contCardIndividual {
-  max-width: 30rem;
+  max-width: 25rem;
 }
 .cardContainer {
   display: flex;
@@ -429,8 +428,13 @@ form {
 .card {
   border-radius: 10px;
   background-color: #2c4c64;
+  flex-direction: column;
   color: white;
-  min-height: 53rem;
+  min-height: 58rem;
+}
+.imgCard2 {
+  object-fit: cover;
+  border-radius: 10%;
 }
 .pCard {
   font-weight: 900;
@@ -486,6 +490,12 @@ h1 {
   display: none;
   background-color: green;
   border: solid 4px yellowgreen;
+}
+.alertUltimos {
+  padding: 0.5rem;
+  background-color: red;
+  width: 100%;
+  text-align: center;
 }
 /* fin clases fede */
 @media (max-width: 576px) {

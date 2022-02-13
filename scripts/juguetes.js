@@ -51,37 +51,74 @@ function imprimirProd(array) {
     $(() => {
 
         arrayImpr.forEach(producto => {
-            $("#cardContainer").append(`
-            <div class="col my-5 mx-auto contCardIndividual " >
-                <div class="card  col-sm-12 h-100 mx-auto px-2">
-                <h5 class="card-title mx-auto text-center my-3" style="width: 90%"> ${producto.nombre.toUpperCase()} </h5>
-                <img src="${producto.imagen}" style="objet-fit:cover; border-radius:50%" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text pCard">Precio : <span>$${producto.precio}</span></p>
-                        <p class="card-text pCard">Stock : <span>${producto.stock}u.</span></p>
-                        <p class="card-text pCard">Descripción: <span  class="d-block"> ${producto.descripcion}</span></p>
-                        <div class="d-flex flex-wrap justify-content-between">
-                        <input class="btnAgregar" type="button" id="${producto._id}"  value="Agregar al carrito" min="1">
+
+            if (producto.stock >= 5) {
+                $("#cardContainer").append(`
+                <div class="col my-5 mx-auto contCardIndividual " >
+                    <div class="card  col-sm-12 h-100 mx-auto px-2">
+                    <h5 class="card-title mx-auto text-center my-3" style="width: 90%"> ${producto.nombre.toUpperCase()} </h5>
+                    <img src="${producto.imagen}" class="card-img-top imgCard2" alt="...">
+                        <div class="card-body">
+                            <p class="card-text pCard">Precio : <span>$${producto.precio}</span></p>
+                            <p class="card-text pCard">Stock : <span>${producto.stock}u.</span></p>
+                            <p class="card-text pCard">Descripción: <span  class="d-block"> ${producto.descripcion}</span></p>
+                            <div class="d-flex flex-wrap justify-content-between">
+                            <input class="btnAgregar" type="button" id="${producto._id}"  value="Agregar al carrito" min="1">
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>`)
+                </div>`)
 
 
-            $(`#${producto._id}`).on("click", () => {
-                let idProducto = event.target.id
+                $(`#${producto._id}`).on("click", () => {
+                    let idProducto = event.target.id
 
-                array1.push(idProducto)
-                let unicos = new Set(array1)
-                console.log(unicos)
+                    array1.push(idProducto)
+                    let unicos = new Set(array1)
+                    console.log(unicos)
 
-                let cleanCarrito = [...unicos]
-                localStorage.setItem("carroShopJuguetes", JSON.stringify(cleanCarrito))
-                objetoStorage = JSON.parse(localStorage.getItem("carroShop")) || JSON.parse(localStorage.getItem("carroShopJuguetes")) || []
-                if (objetoStorage.length != 0) {
-                    contadorfixed.style.visibility = "visible"
-                }
-            })
+                    let cleanCarrito = [...unicos]
+                    localStorage.setItem("carroShopJuguetes", JSON.stringify(cleanCarrito))
+                    objetoStorage = JSON.parse(localStorage.getItem("carroShop")) || JSON.parse(localStorage.getItem("carroShopJuguetes")) || []
+                    if (objetoStorage.length != 0) {
+                        contadorfixed.style.visibility = "visible"
+                    }
+                })
+            }else{
+                $("#cardContainer").append(`
+                <div class="col my-5 mx-auto contCardIndividual " >
+                    <div class="card  col-sm-12 h-100 mx-auto px-2">
+                    <h5 class="card-title mx-auto text-center my-3" style="width: 90%"> ${producto.nombre.toUpperCase()} </h5>
+                    <h5 class="alertUltimos">!Ultimas unidades!<h5>
+                    <img src="${producto.imagen}"  class="card-img-top imgCard2" alt="...">
+                        <div class="card-body">
+                            <p class="card-text pCard">Precio : <span>$${producto.precio}</span></p>
+                            <p class="card-text pCard">Stock : <span>${producto.stock}u.</span></p>
+                            <p class="card-text pCard">Descripción: <span  class="d-block"> ${producto.descripcion}</span></p>
+                            <div class="d-flex flex-wrap justify-content-between">
+                            <input class="btnAgregar" type="button" id="${producto._id}"  value="Agregar al carrito" min="1">
+                            </div>
+                        </div>
+                    </div>
+                </div>`)
+    
+    
+                $(`#${producto._id}`).on("click", () => {
+                    let idProducto = event.target.id
+    
+                    array1.push(idProducto)
+                    let unicos = new Set(array1)
+                    console.log(unicos)
+    
+                    let cleanCarrito = [...unicos]
+                    localStorage.setItem("carroShopJuguetes", JSON.stringify(cleanCarrito))
+                    objetoStorage = JSON.parse(localStorage.getItem("carroShop")) || JSON.parse(localStorage.getItem("carroShopJuguetes")) || []
+                    if (objetoStorage.length != 0) {
+                        contadorfixed.style.visibility = "visible"
+                    }
+                })
+            }
+
         })
 
 
