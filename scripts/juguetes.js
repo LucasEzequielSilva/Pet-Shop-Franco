@@ -1,5 +1,7 @@
+
 const cardContenedor = document.getElementById("cardContainer")
 const inpText = document.getElementById("inpText")
+let objetoStorage = []
 
 let datosApi = []
 let valueInpText = ""
@@ -8,29 +10,14 @@ async function getData() {
         .then(response => response.json())
         .then(dato => {
             datosApi.push(...dato.response.filter(producto => producto.tipo.toLowerCase() == "juguete"))
-
+            console.log(datosApi)
             imprimirProd(datosApi)
-
 
 
         })
 }
 
 getData()
-inpText.addEventListener("input", (e) => {
-    let valor = e.target.value
-    console.log(valor)
-    let arrayImpr = []
-
-    if (valor == undefined) {
-        arrayImpr.push(...datosApi)
-    } else {
-        arrayImpr.push(...datosApi.filter(prod => prod.nombre.toLowerCase().includes(valor.toLowerCase())))
-    }
-
-    imprimirProd(arrayImpr)
-})
-
 
 inpText.addEventListener("input", (e) => {
     let valor = e.target.value
@@ -43,6 +30,11 @@ inpText.addEventListener("input", (e) => {
     }
     imprimirProd(arrayImpr)
 })
+
+
+
+let array1 = []
+let carrito = JSON.parse(localStorage.getItem("carroShopJuguetes")) || []
 
 function imprimirProd(array) {
     cardContenedor.innerHTML = ""
@@ -54,28 +46,58 @@ function imprimirProd(array) {
         arrayImpr = []
         arrayImpr.push(...array)
     }
-    arrayImpr.forEach(producto => {
-        cardContenedor.innerHTML += (`
-        <div class="col my-5 mx-auto contCardIndividual" >
-            <div class="card h-100 col-sm-12  mx-auto px-2">
-            <h5 class="card-title mx-auto text-center my-3" style="width: 90%"> ${producto.nombre.toUpperCase()} </h5>
-            <img src="${producto.imagen}" style="objet-fit:cover; border-radius:50%" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <p style="font-weight: 900;" class="card-text">Precio : <span style="font-weight: 600;margin-left:1rem">$${producto.precio}</span></p>
-                    <p style="font-weight: 900;" class="card-text">Stock : <span  style="font-weight: 600;margin-left:1rem">${producto.stock}u.</span></p>
-                    <p style="font-weight: 900;" class="card-text">Descripción: <span  style="font-weight: 600;display:block"> ${producto.descripcion}</span></p>
-                    <div class="d-flex flex-wrap justify-content-between">
-                    <input type="button" style="color:black; width;50% ;background-color: #3f4c6b; border-radius: 8px;padding: 0.3rem 0.5rem; color:white" value="Agregar al carrito" min="1">
-                    <label class="labelCantidadCard">Cantidad: <input type="number"style="color:black; width:2rem"  value="1" min="1" onkeydown="return false"></label>
+
+
+    $(() => {
+
+        arrayImpr.forEach(producto => {
+            $("#cardContainer").append(`
+            <div class="col my-5 mx-auto contCardIndividual " >
+                <div class="card  col-sm-12 h-100 mx-auto px-2">
+                <h5 class="card-title mx-auto text-center my-3" style="width: 90%"> ${producto.nombre.toUpperCase()} </h5>
+                <img src="${producto.imagen}" style="objet-fit:cover; border-radius:50%" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text pCard">Precio : <span>$${producto.precio}</span></p>
+                        <p class="card-text pCard">Stock : <span>${producto.stock}u.</span></p>
+                        <p class="card-text pCard">Descripción: <span  class="d-block"> ${producto.descripcion}</span></p>
+                        <div class="d-flex flex-wrap justify-content-between">
+                        <input class="btnAgregar" type="button" id="${producto._id}"  value="Agregar al carrito" min="1">
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>`)
+            </div>`)
+
+
+            $(`#${producto._id}`).on("click", () => {
+                let idProducto = event.target.id
+
+                array1.push(idProducto)
+                let unicos = new Set(array1)
+                console.log(unicos)
+
+                let cleanCarrito = [...unicos]
+                localStorage.setItem("carroShopJuguetes", JSON.stringify(cleanCarrito))
+                objetoStorage = JSON.parse(localStorage.getItem("carroShop")) || JSON.parse(localStorage.getItem("carroShopJuguetes")) || []
+                if (objetoStorage.length != 0) {
+                    contadorfixed.style.visibility = "visible"
+                }
+            })
+        })
+
+
     })
+
+
 }
 
 
+const contadorfixed = document.getElementById("contadorfixed")
 
 
+objetoStorage = JSON.parse(localStorage.getItem("carroShop")) || JSON.parse(localStorage.getItem("carroShopJuguetes")) || []
 
+
+if (objetoStorage.length != 0) {
+    contadorfixed.style.visibility = "visible"
+}
 
