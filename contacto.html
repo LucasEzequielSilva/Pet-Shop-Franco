@@ -61,36 +61,37 @@
     <div class="mb-3 d-flex justify-content-center">
       <form action="">
         <fieldset>
-            <h2 id="alertaNombre1"></h2>
+
           <label for="nombreInput1" class="form-label">Nombre y apellido</label>
           <input type="text" class="form-control" id="nombreInput1" placeholder="Franco Perez">
-          <h2 id="alertatelefono"></h2>
+          <p id="alertaNombre1"></p>
           <label for="telefonoInput1" class="form-label">Telefono</label>
           <input type="text" class="form-control" id="telefonoInput1" placeholder="011X15XXXXXXX" > 
-          <h2 id="email"></h2>
+          <p id="alertatelefono"></p>
           <label for="emailInput1" class="form-label">Email:</label>
           <input type="text" class="form-control" id="emailInput1" placeholder="nombre@mail.com">
+          <p id="email"></p>
         </fieldset>
-        <fieldset>
-          <legend> Selecciona tu mascota:</legend>
-          <h2 id="checkbox"></h2>
+        <fieldset >
+          <label for="emailInput1" class="form-label">Selecciona tu mascota:</label>
+          <div class="check" >
           <label for="position1">Perro</label>
           <input type="checkbox" id="position1" name="position1" value="Perro" />
           <label for="position2">Gatos</label>
           <input type="checkbox" id="position2" name="position2" value="Gato" />
           <label for="position3">Otros</label>
           <input type="checkbox" id="position3" name="position3" value="Otros" />
+        </div>
         </fieldset>
 
-        <div class="mb-3">
+        <!-- <div class="mb-3"> -->
           <label for="exampleFormControlTextarea1" class="form-label">Dejanos tu comentario</label>
           <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-        
       
         <fieldset>
-          <input id="botonEnviar" class="botsend" type="submit" value="Enviar Datos" />
+          <input id="botonEnviar" class="botsend" type="submit" value="Enviar" />
         </fieldset>
-      </div>
+      <!--</div>  -->
       <div><h3 id="aviso"></h3>
       </div>
     </div>

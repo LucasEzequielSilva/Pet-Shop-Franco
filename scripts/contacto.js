@@ -16,11 +16,11 @@ const aviso=document.querySelector("#aviso")
 function capturaNombre(event){   
     var dato = event.target.value
     var correctNombre=dato.trim()
-    .toLowerCase() 
-    .split(" ")  
-    .filter(Boolean) 
-    .map(palabra=>palabra[0].toUpperCase()+palabra.substr(1)) 
-    .join(" ") 
+                          .toLowerCase() 
+                          .split(" ")  
+                          .filter(Boolean) 
+                          .map(palabra=>palabra[0].toUpperCase()+palabra.substr(1)) 
+                          .join(" ") 
     if(dato.length>4){
         alertanombreYApellido.innerHTML=""
     }else{
@@ -28,7 +28,9 @@ function capturaNombre(event){
         alertanombreYApellido.style.color="red"
     }
     datoNombre=correctNombre
+    console.log(datoNombre)
 } 
+//queda pendiente que no admita letras
 function capturaTelefono(event){ 
     var dato=event.target.value;
     //var simplificada=/^[0-9]+$/
@@ -37,25 +39,29 @@ function capturaTelefono(event){
                      //.filter(Number)
                      .join("")
                      
-if(datoTel.length>=10){
+if(datoTel.length>=10 && datoTel.includes(Number)) {
     alertaTelefono.innerHTML=""
 }else{
     alertaTelefono.innerHTML="Chequee bien su numero"
     alertaTelefono.style.color="red"
+   
 }
  datoTelefono=datoTel
- console.log(datoTel)
+console.log(datoTel.includes(Number))
 }
  
 function capturaEmail(event){
     var dato=event.target.value;
    var datoE=dato
-   if(!datoE.includes("@")){
+   if(datoE.includes("@")){
+    alertaEmail.innerHTML=""
+   }else{   
   alertaEmail.innerHTML="Chequee su email"
   alertaEmail.style.color="red" }
    datoEmail=datoE
+   console.log(datoEmail)
 }
-
+//se puede prestablecer el tiempo de envio? figura el mensaje tan brevemente q no se ve! 
 function enviar(){
       aviso.innerHTML="Muchas gracias por escribirnos!!"
       aviso.style.color="white"
