@@ -1,8 +1,14 @@
 let arrayImprimir = []
+let totalCash = 0
+let totalCant = 0
 let datosDeApi = []
+let objetosTotales = []
 let final = []
 const carritoContainer = document.getElementById("carrito")
 const limpiarCarrito = document.getElementById("limpiarCarrito")
+const contenedorDatos = document.getElementById("contenedorDatos")
+const finalizar = document.getElementById("finalizar")
+const alertSucess = document.getElementById("alertSucess")
 
 async function getData() {
     await fetch("https://apipetshop.herokuapp.com/api/articulos")
@@ -12,38 +18,47 @@ async function getData() {
             datosDeApi.map(prod => {
                 prod.cantidad = 1
             })
-
-
         })
-
     imprimirPantalla()
-
     limpiarCarrito.addEventListener("click", vaciar)
+
+    calTotales()
+    console.log(`total cash: ${totalCash}`)
+    console.log(`total cant: ${totalCant}`)
+    imprimirDatos()
 }
 
 getData()
 
-
-
+let objetosCarrito = JSON.parse(localStorage.getItem("objetoProd")) || []
 
 function imprimirPantalla() {
 
     arrayImprimir = []
-    let datosStorage = JSON.parse(localStorage.getItem("carroShop"))
-    let datosStorageJuguetes=JSON.parse(localStorage.getItem("carroShop"))
+    let datosStorage = []
+    datosStorage = JSON.parse(localStorage.getItem("carroShop"))
+    let datosStorageJuguetes = JSON.parse(localStorage.getItem("carroShopJuguetes"))
+    // console.log(datosStorageJuguetes)
 
-    console.table(datosStorage)
+    if (datosStorage == null) {
+        datosStorage = [...datosStorageJuguetes]
+    } else if (datosStorage != null && datosStorageJuguetes != null) {
+        datosStorage.push(...datosStorageJuguetes)
+    }
+
+    // console.table(datosStorage)
     if (datosStorage != null) {
         final = datosStorage
     } else {
         final = []
     }
-
-
+    let arrayFiltrado = []
     final.map(idStorage => {
+        arrayFiltrado.push(...datosDeApi.filter(prod => prod._id == idStorage))
         arrayImprimir.push(...datosDeApi.filter(prod => prod._id == idStorage))
+        // objetosTotales.push(...datosDeApi.filter(prod => prod._id == idStorage))
+        localStorage.setItem("objetoProd", JSON.stringify(arrayFiltrado))
     })
-
     carritoContainer.innerHTML = ""
     if (final.length == 0) {
         carritoContainer.innerHTML = "<h2>No hay elementos en el carito</h2>"
@@ -69,6 +84,7 @@ function imprimirPantalla() {
                     </div>
             `)
             $(() => {
+                // eliminar productos del carrito
                 $(`#${producto._id}`).on("click", () => {
 
                     let momentaneo = event.target.id
@@ -78,44 +94,41 @@ function imprimirPantalla() {
                             arrayPrueba.push(prod)
                         }
                     })
-
                     localStorage.clear()
                     localStorage.setItem("carroShop", JSON.stringify(arrayPrueba))
                     imprimirPantalla()
-
+                    calTotales()
                 })
+                // retar cantidad por producto
                 let contador = []
                 $(`#restCantidad${producto._id}`).on("click", () => {
 
                     let idProd = event.target.value
-
                     contador = []
-                    contador.push(...arrayImprimir.filter(productoA => productoA._id == idProd))
+                    contador = [...arrayImprimir.filter(productoA => productoA._id == idProd)]
                     contador.map(prod => prod.cantidad--)
-
+                    localStorage.setItem("objetoProd", JSON.stringify(arrayImprimir))
                     imprimirPantalla()
+                    calTotales()
                 })
+                // incrementar cantidad por producto
                 $(`#addCantidad${producto._id}`).on("click", () => {
                     let idProd = event.target.value
-
+                    let index = datosDeApi.indexOf(prod => prod._id == idProd)
+                    let buscado = datosDeApi.filter(prod => prod._id == idProd)
+                    datosDeApi.splice(index, 1, buscado)
                     contador = []
-                    contador.push(...arrayImprimir.filter(productoA => productoA._id == idProd))
+                    contador = [...arrayImprimir.filter(productoA => productoA._id == idProd)]
                     contador.map(prod => prod.cantidad++)
-
+                    localStorage.setItem("objetoProd", JSON.stringify(arrayImprimir))
                     imprimirPantalla()
+                    calTotales()
+
                 })
-
-
             })
-
         })
     }
-
-
-
 }
-
-
 
 function vaciar() {
     localStorage.clear()
@@ -123,4 +136,44 @@ function vaciar() {
     imprimirPantalla()
 }
 
+function calTotales() {
+    objetosTotales = JSON.parse(localStorage.getItem("objetoProd"))
+    console.log(objetosTotales)
+    let list = []
+    list.push(...objetosTotales)
+    let suma = 0
+    let arrayC = []
+    let iterador = 0
+    arrayC.push(...list)
+    arrayC.map(prod => {
+        prod.total = prod.cantidad * prod.precio
+    })
+    arrayC.forEach(prod => {
+        suma += prod.total
+    })
+    list.forEach(prod => {
+        iterador += prod.cantidad
+    })
+    totalCash = suma
+    totalCant = iterador
 
+    console.log(`total cash: ${totalCash}`)
+    console.log(`total cant: ${totalCant}`)
+    imprimirDatos()
+}
+
+
+function imprimirDatos() {
+    contenedorDatos.innerHTML =
+        (`
+            <p>Cantidad de productos: ${totalCant} unidades </p>
+            <p>Total a pagar:  ${totalCash} usd</p>
+            
+            `)
+
+}
+
+
+finalizar.addEventListener("click", () => {
+    alertSucess.style.display = "block"
+})

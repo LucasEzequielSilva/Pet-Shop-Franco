@@ -33,7 +33,7 @@ inpText.addEventListener("input", (e) => {
 
 
 let array1 = []
-let carrito = JSON.parse(localStorage.getItem("carroShop")) || []
+let carrito = JSON.parse(localStorage.getItem("carroShopJuguetes")) || []
 
 function imprimirProd(array) {
     cardContenedor.innerHTML = ""
@@ -76,15 +76,16 @@ function imprimirProd(array) {
                 array1.push(idProducto)
                 let unicos = new Set(array1)
                 console.log(unicos)
-                let cleanCarrito = [...unicos]
-                localStorage.setItem("carroShop", JSON.stringify(cleanCarrito))
 
+                let cleanCarrito = [...unicos]
+                localStorage.setItem("carroShopJuguetes", JSON.stringify(cleanCarrito))
 
             })
         })
 
 
     })
+    
 
 }
 
