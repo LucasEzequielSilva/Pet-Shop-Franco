@@ -61,9 +61,9 @@ function imprimirProd(array) {
             <h5 class="card-title mx-auto text-center my-3" style="width: 90%"> ${producto.nombre.toUpperCase()} </h5>
             <img src="${producto.imagen}" style="objet-fit:cover; border-radius:50%" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <p style="font-weight: 900;" class="card-text">Precio : <span style="font-weight: 600;margin-left:1rem">$${producto.precio}</span></p>
-                    <p style="font-weight: 900;" class="card-text">Stock : <span  style="font-weight: 600;margin-left:1rem">${producto.stock}u.</span></p>
-                    <p style="font-weight: 900;" class="card-text">Descripción: <span  style="font-weight: 600;display:block"> ${producto.descripcion}</span></p>
+                    <p  class="card-text pCard">Precio : <span style="font-weight: 600;margin-left:1rem">$${producto.precio}</span></p>
+                    <p  class="card-text pCard">Stock : <span  style="font-weight: 600;margin-left:1rem">${producto.stock}u.</span></p>
+                    <p  class="card-text pCard">Descripción: <span  style="font-weight: 600;display:block"> ${producto.descripcion}</span></p>
                     <div class="d-flex flex-wrap justify-content-between">
                     <input type="button" style="color:black; width;50% ;background-color: #3f4c6b; border-radius: 8px;padding: 0.3rem 0.5rem; color:white" value="Agregar al carrito" min="1">
                     <label class="labelCantidadCard">Cantidad: <input type="number"style="color:black; width:2rem"  value="1" min="1" onkeydown="return false"></label>
