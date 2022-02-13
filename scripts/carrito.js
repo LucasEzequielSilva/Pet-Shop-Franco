@@ -20,6 +20,7 @@ async function getData() {
             })
         })
     imprimirPantalla()
+
     limpiarCarrito.addEventListener("click", vaciar)
 
     calTotales()
@@ -40,7 +41,7 @@ function imprimirPantalla() {
     let datosStorageJuguetes = JSON.parse(localStorage.getItem("carroShopJuguetes"))
     // console.log(datosStorageJuguetes)
 
-    if (datosStorage == null) {
+    if (datosStorage == null && datosStorageJuguetes!=null) {
         datosStorage = [...datosStorageJuguetes]
     } else if (datosStorage != null && datosStorageJuguetes != null) {
         datosStorage.push(...datosStorageJuguetes)
@@ -132,7 +133,8 @@ function imprimirPantalla() {
 
 function vaciar() {
     localStorage.clear()
-    // localStorage.removeItem("carroShop")
+    localStorage.removeItem("carroShop")
+    localStorage.removeItem("carroShopJuguetes")
     imprimirPantalla()
 }
 

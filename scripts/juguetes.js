@@ -1,6 +1,7 @@
 
 const cardContenedor = document.getElementById("cardContainer")
 const inpText = document.getElementById("inpText")
+let objetoStorage = []
 
 let datosApi = []
 let valueInpText = ""
@@ -66,10 +67,7 @@ function imprimirProd(array) {
                 </div>
             </div>`)
 
-            let valor = 1
-            $(`#inputCant${producto._id}`).on("change", () => {
-                valor = event.target.value
-            })
+
             $(`#${producto._id}`).on("click", () => {
                 let idProducto = event.target.id
 
@@ -79,15 +77,27 @@ function imprimirProd(array) {
 
                 let cleanCarrito = [...unicos]
                 localStorage.setItem("carroShopJuguetes", JSON.stringify(cleanCarrito))
-
+                objetoStorage = JSON.parse(localStorage.getItem("carroShop")) || JSON.parse(localStorage.getItem("carroShopJuguetes")) || []
+                if (objetoStorage.length != 0) {
+                    contadorfixed.style.visibility = "visible"
+                }
             })
         })
 
 
     })
-    
+
 
 }
 
 
+const contadorfixed = document.getElementById("contadorfixed")
+
+
+objetoStorage = JSON.parse(localStorage.getItem("carroShop")) || JSON.parse(localStorage.getItem("carroShopJuguetes")) || []
+
+
+if (objetoStorage.length != 0) {
+    contadorfixed.style.visibility = "visible"
+}
 
