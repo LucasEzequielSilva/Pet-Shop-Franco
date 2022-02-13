@@ -62,23 +62,23 @@ function imprimirPantalla() {
     })
     carritoContainer.innerHTML = ""
     if (final.length == 0) {
-        carritoContainer.innerHTML = "<h2>No hay elementos en el carito</h2>"
+        carritoContainer.innerHTML = "<h2 class = 'carritoVacio'>No hay elementos en el carrito</h2>"
     } else {
         arrayImprimir.forEach(producto => {
             carritoContainer.innerHTML += (`
             <div class="col my-5 mx-auto contCardIndividual" >
                         <div class="card h-100 px-2 ">
                         <h5 class="card-title mx-auto text-center my-3" style="width: 90%"> ${producto.nombre.toUpperCase()} </h5>
-                        <img src="${producto.imagen}" style="objet-fit:cover; border-radius:50%" class="card-img-top" alt="...">
+                        <img src="${producto.imagen}" class="card-img-top imgCard2" alt="...">
                             <div class="card-body">
                                 <p class="card-text pCard">Precio : <span>$${producto.precio}</span></p>
                                 <p class="card-text pCard">Stock : <span>${producto.stock}u.</span></p>
                                 <p class="card-text pCard">Descripción: <span  class="d-block"> ${producto.descripcion}</span></p>
-                                <div class="d-flex flex-wrap justify-content-between">
+                                <div class="d-flex flex-wrap justify-content-between align-items-center">
                                 <input class="btnEliminar" type="button" id="${producto._id}" value="Eliminar producto" min="1">
-                                <button class="" value="${producto._id}" id="addCantidad${producto._id}">+</button>
-                                <p>${producto.cantidad}</p>
-                                <button class="" value="${producto._id}" id="restCantidad${producto._id}">-</button>
+                                <button class="botonSumar" value="${producto._id}" id="addCantidad${producto._id}">+</button>
+                                <p class="m-0">${producto.cantidad}</p>
+                                <button class="botonRestar" value="${producto._id}" id="restCantidad${producto._id}">-</button>
                                 </div>
                             </div>
                         </div>
@@ -140,7 +140,7 @@ function vaciar() {
 }
 
 function calTotales() {
-    objetosTotales = JSON.parse(localStorage.getItem("objetoProd"))
+    objetosTotales = JSON.parse(localStorage.getItem("objetoProd")) || []
     console.log(objetosTotales)
     let list = []
     list.push(...objetosTotales)
@@ -169,8 +169,8 @@ function calTotales() {
 function imprimirDatos() {
     contenedorDatos.innerHTML =
         (`
-            <p>Cantidad de productos: ${totalCant} unidades </p>
-            <p>Total a pagar:  ${totalCash} usd</p>
+            <p class = "tagTotal">Cantidad de productos: ${totalCant} unidades </p>
+            <p class = "tagTotal">Total a pagar:  ${totalCash} usd</p>
             
             `)
 

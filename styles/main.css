@@ -487,16 +487,137 @@ h1 {
   transform: scale(1, 1);
 }
 .alertSucess {
+  display: flex;
+  position: relative;
+  height: 10rem;
+  text-align: center;
   display: none;
-  background-color: green;
+  /* background-color: green; */
   border: solid 4px yellowgreen;
 }
+
+.alertSucess img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 10rem;
+}
+
+.alertSucess p {
+  /* display: flex;
+  height: 100%;
+  align-items: center;
+  display: inline;
+  margin: auto; */
+  position: relative;
+  margin-top: 3rem;
+  font-size: xx-large;
+  color: greenyellow;
+}
+
 .alertUltimos {
   padding: 0.5rem;
   background-color: red;
   width: 100%;
   text-align: center;
 }
+
+.contenedorDatos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+  margin-top: 2rem;
+  border: solid 2px #2c4c64;
+  border-radius: 5px;
+  width: 50%;
+  padding-top: 1rem;
+}
+
+.botonSumar {
+  background-color: green;
+  width: 2rem;
+  height: 2rem;
+  /* padding: 0.5rem 0; */
+  align-self: center;
+  border-radius: 50%;
+  transition: all 0.5s;
+  color: white;
+  font-weight: 600;
+  border: none;
+}
+
+.botonSumar:hover {
+  background-color: greenyellow;
+  color: #1c1c1c;
+  transform: scale(1.05, 1.05);
+}
+
+.botonRestar {
+  background-color: rgb(255, 5, 5);
+  width: 2rem;
+  height: 2rem;
+  /* padding: 0.5rem 0; */
+  align-self: center;
+  border-radius: 50%;
+  transition: all 0.5s;
+  color: white;
+  font-weight: 600;
+  border: none;
+}
+
+.botonRestar:hover {
+  background-color: rgb(255, 189, 47);
+  color: #1c1c1c;
+  transform: scale(1.05, 1.05);
+}
+
+.carritoVacio {
+  text-align: center;
+  color: rgb(255, 187, 0);
+}
+
+.tagTotal {
+  color: white;
+  font-weight: 600;
+  font-size: x-large;
+}
+
+#finalizar {
+  background-color: green;
+  width: 12rem;
+  padding: 1rem 0;
+  align-self: center;
+  border-radius: 8px;
+  transition: all 0.5s;
+  color: white;
+  font-weight: 600;
+  border: none;
+  margin: 2rem;
+}
+
+#finalizar:hover {
+  transform: scale(1.05, 1.05);
+  background-color: greenyellow;
+  color: black;
+}
+
+
+/* FORMULARIO */
+
+.form-1 {
+  width: 50% ;
+  margin: auto;
+}
+
+.botsend {
+
+}
+
+.selecciona-mascota {
+  color: white;
+}
+
 /* fin clases fede */
 @media (max-width: 576px) {
   .textoheader {
