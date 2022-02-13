@@ -367,8 +367,10 @@ main {
 .gatito {
   object-fit: cover;
   min-width: 10rem;
+
   border-radius: 1rem;
   margin: 1rem;
+
 }
 
 /* FOOTER */
