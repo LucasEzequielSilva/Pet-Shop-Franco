@@ -328,6 +328,7 @@ background: linear-gradient(to bottom, #7BC6CC, #8392df); /* W3C, IE 10+/ Edge, 
  .apartado2>section>span, .apartado2>div>span{
      font-weight: 600;
      font-size: 1.5rem;
+     margin:1rem 0 1rem 0;
  }
  .apartado2>section>h2{
      font-size: 2.5rem;
@@ -347,7 +348,13 @@ background: linear-gradient(to bottom, #7BC6CC, #8392df); /* W3C, IE 10+/ Edge, 
 footer{
     width: 100%!important;
     padding: 0!important;
+    
 }
+
+.abajo{
+    position:absolute;
+    width:100%;
+    background-image:url("/img/pasto.png");}
 .row{
     width: 100%!important;
     justify-content: center!important;
@@ -383,6 +390,7 @@ footer{
     }
     .apartado2>section>span, .apartado2>div>span{
         font-size: 1.1rem;
+        margin:1rem 0 1rem 0;
     }
     .apartado2 img {
         width: 23rem;
@@ -425,6 +433,7 @@ footer{
     }
     .apartado2>section>span, .apartado2>div>span{
         font-size: 1.15rem;
+        margin:1rem 0 1rem 0;
     }
     .apartado2 img {
         width: 23rem;
@@ -459,6 +468,7 @@ footer{
     }
     .apartado2>section>span, .apartado2>div>span{
         font-size: 1.3rem;
+        margin:1rem 0 1rem 0;
     }
     .apartado2 img {
         width: 23rem;
@@ -475,6 +485,7 @@ footer{
     }
     .apartado2>section>span, .apartado2>div>span{
         font-size: 1.3rem;
+        margin:1rem 0 1rem 0;
     }
     .textoheader{
         width: 56%;
@@ -494,3 +505,6 @@ footer{
         width: 38rem;
     }
     }
+
+ .fin{position: relative;
+top:1.5rem;}
