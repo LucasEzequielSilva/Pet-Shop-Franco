@@ -1,6 +1,7 @@
 let datosApi = []
 const cardContenedor = document.getElementById("cardContainer")
 const inpText = document.getElementById("inpText")
+let objetoStorage = []
 
 
 
@@ -46,7 +47,7 @@ function imprimirProd(array) {
         arrayImpr = []
         arrayImpr.push(...array)
     }
-    
+
 
     $(() => {
 
@@ -79,8 +80,15 @@ function imprimirProd(array) {
                 console.log(unicos)
                 let cleanCarrito = [...unicos]
                 localStorage.setItem("carroShop", JSON.stringify(cleanCarrito))
+                // let objetoStorage = JSON.parse(localStorage.getItem("objetoProd"))
 
-                
+
+                // contadorfixed.innerText = objetoStorage.length
+                objetoStorage = JSON.parse(localStorage.getItem("carroShop")) || JSON.parse(localStorage.getItem("carroShopJuguetes")) || []
+                if (objetoStorage.length != 0) {
+                    contadorfixed.style.visibility = "visible"
+                }
+
             })
         })
 
@@ -91,8 +99,15 @@ function imprimirProd(array) {
 
 
 
+const contadorfixed = document.getElementById("contadorfixed")
 
 
+objetoStorage = JSON.parse(localStorage.getItem("carroShop")) || JSON.parse(localStorage.getItem("carroShopJuguetes")) || []
+
+
+if (objetoStorage.length != 0) {
+    contadorfixed.style.visibility = "visible"
+}
 
 
 
