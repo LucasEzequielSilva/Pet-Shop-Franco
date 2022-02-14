@@ -438,6 +438,8 @@ form {
 }
 .pCard {
   font-weight: 900;
+  color: white;
+  text-align: center;
 }
 .pCard span {
   font-weight: 600;
@@ -602,22 +604,29 @@ h1 {
   color: black;
 }
 
-
 /* FORMULARIO */
 
 .form-1 {
-  width: 50% ;
+  width: 50%;
   margin: auto;
-}
-
-.botsend {
-
 }
 
 .selecciona-mascota {
   color: white;
 }
-
+.mensajeForm {
+  position: absolute;
+  right: 25%;
+  width: 50%;
+  align-self: center;
+  margin: auto;
+  border: solid 4px yellowgreen;
+}
+.mensajeContacto {
+  color: white;
+  text-align: center;
+  margin: 0;
+}
 /* fin clases fede */
 @media (max-width: 576px) {
   .textoheader {
