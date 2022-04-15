@@ -4,6 +4,13 @@
   padding: 0;
   box-sizing: border-box;
 }
+*::-webkit-scrollbar {
+  width: 0.4rem;
+}
+*::-webkit-scrollbar-thumb {
+  background-color:#ffea00;
+  border-radius: 2px;
+}
 .carritofixed {
   position: fixed;
   display: flex;
@@ -238,7 +245,7 @@ main {
 
 .description h2 {
   background: linear-gradient(135deg, #90dfe4 0%, #8392df 100%);
-  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
   -webkit-background-clip: text;
   text-shadow: #ffffff00 0 0 0 !important;
   text-align: center;
