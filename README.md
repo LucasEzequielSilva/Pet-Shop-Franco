@@ -4,11 +4,11 @@
 
 <h1><b>Construido con 🛠️</b></h1>
 
-HTML5
-JAVASCRIPT
-CSS3
-BOOTSTRAP
-AXIOS
+1. HTML5
+2. JAVASCRIPT
+3. CSS3
+4. BOOTSTRAP
+5. AXIOS
 
 <h1><b>Autores ✒️</b></h1>
 
